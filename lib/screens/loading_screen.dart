@@ -13,6 +13,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     super.initState();
     location = Location();
     print(location.getLatitude());
+    print(location.getLongitude());
   }
 
   @override
