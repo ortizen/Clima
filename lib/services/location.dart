@@ -17,6 +17,8 @@ class Location {
           desiredAccuracy: LocationAccuracy.low);
     } catch (e) {
       currentLocation = null;
+      print(e.toString());
+
     }
     return currentLocation;
   }
