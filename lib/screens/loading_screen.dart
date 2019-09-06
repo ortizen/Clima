@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:clima/services/location.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 const String api = 'fa8ae1fddb735bd16147a55cfde9a358';
 
@@ -22,11 +23,11 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Text('No input'),
-          Text('No input'),
-        ],
+      body: Center(
+        child: SpinKitDoubleBounce(
+          color: Colors.lightGreenAccent,
+          size: 100.0,
+        ),
       ),
     );
   }
