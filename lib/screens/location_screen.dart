@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:clima/utilities/constants.dart';
+import 'package:clima/services/weather.dart';
 
 class LocationScreen extends StatefulWidget {
+  final WeatherModel weather;
+  LocationScreen({this.weather});
   @override
   _LocationScreenState createState() => _LocationScreenState();
 }
@@ -49,11 +52,11 @@ class _LocationScreenState extends State<LocationScreen> {
                 child: Row(
                   children: <Widget>[
                     Text(
-                      '32°',
+                      '${widget.weather.temp}°',
                       style: kTempTextStyle,
                     ),
                     Text(
-                      '☀️',
+                      '${widget.weather.getWeatherIcon()}',
                       style: kConditionTextStyle,
                     ),
                   ],
@@ -62,7 +65,7 @@ class _LocationScreenState extends State<LocationScreen> {
               Padding(
                 padding: EdgeInsets.only(right: 15.0),
                 child: Text(
-                  "It's 🍦 time in San Francisco!",
+                  '${widget.weather.getMessage()} in ${widget.weather.cityName}!',
                   textAlign: TextAlign.right,
                   style: kMessageTextStyle,
                 ),
