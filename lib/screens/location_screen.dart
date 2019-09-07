@@ -52,7 +52,7 @@ class _LocationScreenState extends State<LocationScreen> {
                 child: Row(
                   children: <Widget>[
                     Text(
-                      '${widget.weather.temp}°',
+                      '${widget.weather.temp.toInt()}°',
                       style: kTempTextStyle,
                     ),
                     Text(
@@ -77,7 +77,3 @@ class _LocationScreenState extends State<LocationScreen> {
     );
   }
 }
-
-//double temperature = weatherData['main']['temp'];
-//int condition = weatherData['weather'][0]['id'];
-//String cityName = weatherData['name'];

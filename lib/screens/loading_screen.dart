@@ -9,19 +9,12 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
+  WeatherModel weather = new WeatherModel();
+
   @override
   void initState() {
     super.initState();
-    WeatherModel weather = new WeatherModel();
-    weather.getLocation();
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => LocationScreen(
-          weather: weather,
-        ),
-      ),
-    );
+    changePage();
   }
 
   @override
@@ -32,6 +25,19 @@ class _LoadingScreenState extends State<LoadingScreen> {
           color: Colors.lightGreenAccent,
           size: 100.0,
         ),
+      ),
+    );
+  }
+
+  Future<void> changePage() async {
+    await weather.getLocation();
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) =>
+            LocationScreen(
+              weather: weather,
+            ),
       ),
     );
   }

@@ -5,7 +5,7 @@ import 'dart:convert' as convert;
 const String api = 'fa8ae1fddb735bd16147a55cfde9a358';
 
 class WeatherModel {
-  int temp;
+  double temp;
   String cityName;
   int condition;
   WeatherModel();
@@ -42,13 +42,14 @@ class WeatherModel {
     }
   }
 
-  void getLocation() async {
+  Future<void> getLocation() async {
     Location location = Location();
     await location.getLocation();
     var latitude = location.getLatitude();
     var longitude = location.getLongitude();
     String url =
-        'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$api';
+        'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&units=metric&appid=$api';
+    print(url);
     var response = await http.get(url);
     if (response.statusCode == 200) {
       var jsonResponse = convert.jsonDecode(response.body);
